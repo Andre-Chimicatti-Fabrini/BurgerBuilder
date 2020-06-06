@@ -12,6 +12,7 @@ const controls = [
 
 const buildControls = (props) => (
     <div className={styles.BuildControls}>
+        <div style={ {textAlign: "center", margin: "10px 0 20px"} } >Current Price: <strong>{props.price.toFixed(2)}</strong></div>
         {controls.map(ctrl => (
             <BuildControl 
                 key={ctrl.label}
@@ -22,7 +23,12 @@ const buildControls = (props) => (
                 disabled={props.disabled[ctrl.type]}
             /> 
         ))}
-
+        <div style={ {textAlign: "center"} }>
+            <button 
+                className={styles.OrderButton}
+                disabled={!props.purchasable}
+                onClick={props.ordered}>ORDER NOW</button>
+        </div>
     </div>
 );
 
